@@ -1,4 +1,4 @@
-import pytest # type: ignore
+import pytest
 from decimal import Decimal
 from datetime import datetime
 from app.calculation import Calculation

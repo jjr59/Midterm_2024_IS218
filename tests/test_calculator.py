@@ -1,7 +1,7 @@
 import datetime
 from pathlib import Path
-import pandas as pd # type: ignore
-import pytest # type: ignore
+import pandas as pd
+import pytest
 from unittest.mock import Mock, patch, PropertyMock
 from decimal import Decimal
 from tempfile import TemporaryDirectory
@@ -38,7 +38,7 @@ def calculator():
 
 # Test Calculator Initialization
 
-def test_calculator_initialization(calculator):
+def test_calculator_initialization(calculator: Calculator):
     assert calculator.history == []
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
@@ -59,12 +59,12 @@ def test_logging_setup(logging_info_mock):
 
 # Test Adding and Removing Observers
 
-def test_add_observer(calculator):
+def test_add_observer(calculator: Calculator):
     observer = LoggingObserver()
     calculator.add_observer(observer)
     assert observer in calculator.observers
 
-def test_remove_observer(calculator):
+def test_remove_observer(calculator: Calculator):
     observer = LoggingObserver()
     calculator.add_observer(observer)
     calculator.remove_observer(observer)
@@ -72,38 +72,38 @@ def test_remove_observer(calculator):
 
 # Test Setting Operations
 
-def test_set_operation(calculator):
+def test_set_operation(calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     assert calculator.operation_strategy == operation
 
 # Test Performing Operations
 
-def test_perform_operation_addition(calculator):
+def test_perform_operation_addition(calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     result = calculator.perform_operation(2, 3)
     assert result == Decimal('5')
 
-def test_perform_operation_validation_error(calculator):
+def test_perform_operation_validation_error(calculator: Calculator):
     calculator.set_operation(OperationFactory.create_operation('add'))
     with pytest.raises(ValidationError):
         calculator.perform_operation('invalid', 3)
 
-def test_perform_operation_operation_error(calculator):
+def test_perform_operation_operation_error(calculator: Calculator):
     with pytest.raises(OperationError, match="No operation set"):
         calculator.perform_operation(2, 3)
 
 # Test Undo/Redo Functionality
 
-def test_undo(calculator):
+def test_undo(calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
     calculator.undo()
     assert calculator.history == []
 
-def test_redo(calculator):
+def test_redo(calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
@@ -114,7 +114,7 @@ def test_redo(calculator):
 # Test History Management
 
 @patch('app.calculator.pd.DataFrame.to_csv')
-def test_save_history(mock_to_csv, calculator):
+def test_save_history(mock_to_csv, calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
@@ -123,7 +123,7 @@ def test_save_history(mock_to_csv, calculator):
 
 @patch('app.calculator.pd.read_csv')
 @patch('app.calculator.Path.exists', return_value=True)
-def test_load_history(mock_exists, mock_read_csv, calculator):
+def test_load_history(mock_exists, mock_read_csv, calculator: Calculator):
     # Mock CSV data to match the expected format in from_dict
     mock_read_csv.return_value = pd.DataFrame({
         'operation': ['Addition'],
@@ -149,7 +149,7 @@ def test_load_history(mock_exists, mock_read_csv, calculator):
             
 # Test Clearing History
 
-def test_clear_history(calculator):
+def test_clear_history(calculator: Calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
