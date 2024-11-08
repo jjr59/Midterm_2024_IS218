@@ -21,7 +21,7 @@ CalculationResult = Union[Number, str]
 
 @dataclass
 class CalculatorMemento:
-    """Stores calculator state for undo/redo functionality."""
+    """Store calculator state for undo/redo functionality."""
     history: List[Calculation]
     timestamp: datetime.datetime = field(default_factory=datetime.datetime.now)
 
