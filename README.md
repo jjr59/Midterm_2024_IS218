@@ -58,5 +58,5 @@ Factory: Used to instantiate different types of operations based on user input.
 Command: Encapsulates requests as objects, allowing for parameterization and queuing of commands.
 Memento: Saves the state of the calculator to allow for undo functionality or history tracking.
 
-#Video
+Video
 URL - https://youtu.be/_ZG0R2LI2Kg
