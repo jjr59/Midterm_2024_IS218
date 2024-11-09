@@ -8,26 +8,26 @@ The project is divided into several modules, each focusing on a specific aspect 
 
 Directory Structure
 calculator_project/
-│
-├── app/
-│   ├── __init__.py                 # Marks the directory as a package
-│   ├── calculator.py               # Main calculator logic
-│   ├── calculator_config.py        # Configuration settings for the calculator
-│   ├── input_validators.py         # Input validation logic
-│   ├── exceptions.py               # Custom exception hierarchy
-│   ├── history.py                  # Persistence: History saving/loading
-│   └── logger.py                   # Logging setup
-│
-├── tests/                          # Unit tests for the project
-│   ├── __init__.py                 # Marks the directory as a package
-│   ├── test_calculator.py          # Tests for the main calculator logic
-│   ├── test_input_validators.py    # Tests for input validation
-│   ├── test_exceptions.py          # Tests for exceptions
-│   └── test_history.py             # Tests for history persistence
-│
-├── requirements.txt                # Project dependencies
-├── pytest.ini                      # Pytest configuration
-└── README.md                       # Project documentation (this file)
+app/
+__init__.py # Marks the directory as a package
+calculator.py # Main calculator logic
+calculator_config.py # Configuration settings for the calculator
+input_validators.py # Input validation logic
+exceptions.py # Custom exception hierarchy
+history.py # Persistence: History saving/loading
+logger.py # Logging setup
+
+tests/ # Unit tests for the project
+__init__.py # Marks the directory as a package
+test_calculator.py # Tests for the main calculator logic
+test_input_validators.py # Tests for input validation
+test_exceptions.py # Tests for exceptions
+test_history.py # Tests for history persistence
+
+requirements.txt # Project dependencies
+pytest.ini # Pytest configuration
+README.md # Project documentation (this file)
+
 Key Files and Their Purpose
 app/calculator.py: Contains the core calculator logic, including methods for arithmetic operations (add, subtract, multiply, divide). This file also includes the integration of different design patterns, such as Strategy for operation handling.
 
