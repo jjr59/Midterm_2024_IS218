@@ -7,8 +7,8 @@ Project Structure
 The project is divided into several modules, each focusing on a specific aspect of the calculator. Below is an overview of the key files and directories in the project:
 
 Directory Structure
-calculator_project/
-app/
+calculator_project
+app
 __init__.py # Marks the directory as a package
 calculator.py # Main calculator logic
 calculator_config.py # Configuration settings for the calculator
@@ -17,7 +17,7 @@ exceptions.py # Custom exception hierarchy
 history.py # Persistence: History saving/loading
 logger.py # Logging setup
 
-tests/ # Unit tests for the project
+tests # Unit tests for the project
 __init__.py # Marks the directory as a package
 test_calculator.py # Tests for the main calculator logic
 test_input_validators.py # Tests for input validation
